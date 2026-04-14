@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>崇倫國中女子手球隊 — 2026 丹麥維堡國際賽募款</title>
+  <meta name="description" content="支持崇倫國中女子手球隊出征 2026 年丹麥維堡國際手球分齡賽，讓台灣之光在世界舞台發光！" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Noto+Sans+TC:wght@300;400;500;700;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --red:    #C41E3A;
+      --red-dk: #9B1530;
+      --red-lt: #E8425A;
+      --gold:   #F5A623;
+      --gold-lt:#FBBF24;
+      --navy:   #1A2E5A;
+      --navy-dk:#0F1C3A;
+      --navy-lt:#2D4A8A;
+      --white:  #FFFFFF;
+      --off-white: #F8F7F4;
+      --text:   #1A1A2E;
+      --muted:  #4A5568;
+      --border: #E2E8F0;
+      --radius: 12px;
+      --shadow: 0 4px 24px rgba(26,46,90,.12);
+      --shadow-lg: 0 12px 48px rgba(26,46,90,.18);
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── Skip link ── */
+    .skip-link {
+      position: absolute; top: -40px; left: 16px; padding: 8px 16px;
+      background: var(--navy); color: white; border-radius: 0 0 8px 8px;
+      font-size: .875rem; z-index: 1000; transition: top .2s;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* ── Sticky CTA ── */
+    .sticky-cta {
+      position: fixed; bottom: 24px; right: 24px; z-index: 50;
+      display: flex; flex-direction: column; gap: 8px; align-items: flex-end;
+      transition: opacity .3s, transform .3s;
+    }
+    .sticky-cta.hidden { opacity: 0; pointer-events: none; transform: translateY(16px); }
+    .sticky-btn {
+      display: flex; align-items: center; gap: 8px;
+      padding: 14px 24px; border-radius: 50px;
+      font-family: 'Noto Sans TC', sans-serif; font-weight: 700; font-size: 1rem;
+      cursor: pointer; border: none; text-decoration: none;
+      box-shadow: 0 8px 32px rgba(196,30,58,.4);
+      transition: transform .2s, box-shadow .2s;
+      white-space: nowrap;
+    }
+    .sticky-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(196,30,58,.5); }
+    .sticky-btn:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+    .sticky-btn-primary { background: var(--red); color: white; }
+    .sticky-btn svg { width: 20px; height: 20px; flex-shrink: 0; }
+
+    /* ── Section utilities ── */
+    .section { padding: 96px 24px; }
+    .section-sm { padding: 64px 24px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .container-narrow { max-width: 780px; margin: 0 auto; }
+
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: .875rem; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--red);
+      display: flex; align-items: center; gap: 10px; margin-bottom: 16px;
+    }
+    .section-label::before, .section-label::after {
+      content: ''; flex: 1; height: 1px; background: var(--red); opacity: .3;
+    }
+    .section-label::before { max-width: 32px; }
+
+    h2.section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900; font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1.1; color: var(--navy); margin-bottom: 16px;
+    }
+    .section-subtitle {
+      font-size: 1.125rem; color: var(--muted); line-height: 1.75;
+      margin-bottom: 48px; max-width: 64ch;
+    }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 16px 32px; border-radius: 50px; border: none;
+      font-family: 'Noto Sans TC', sans-serif; font-weight: 700; font-size: 1rem;
+      cursor: pointer; text-decoration: none; transition: transform .2s, box-shadow .2s, background .2s;
+    }
+    .btn:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: var(--red); color: white;
+      box-shadow: 0 6px 24px rgba(196,30,58,.35);
+    }
+    .btn-primary:hover { background: var(--red-dk); box-shadow: 0 10px 32px rgba(196,30,58,.45); }
+    .btn-secondary {
+      background: transparent; color: var(--navy);
+      border: 2px solid var(--navy);
+    }
+    .btn-secondary:hover { background: var(--navy); color: white; }
+    .btn-gold {
+      background: var(--gold); color: var(--navy);
+      box-shadow: 0 6px 24px rgba(245,166,35,.4);
+    }
+    .btn-gold:hover { background: var(--gold-lt); box-shadow: 0 10px 32px rgba(245,166,35,.5); }
+    .btn svg { width: 20px; height: 20px; }
+
+    /* ─────────────────────────────────────────
+       § 1  HERO
+    ───────────────────────────────────────── */
+    #hero {
+      position: relative; min-height: 100svh;
+      background: linear-gradient(145deg, var(--navy-dk) 0%, var(--navy) 40%, #2A1A4A 100%);
+      display: flex; flex-direction: column; justify-content: center;
+      overflow: hidden; padding: 120px 24px 80px;
+    }
+
+    /* Court line decoration */
+    #hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        repeating-linear-gradient(90deg, rgba(255,255,255,.03) 0, rgba(255,255,255,.03) 1px, transparent 1px, transparent 80px),
+        repeating-linear-gradient(0deg, rgba(255,255,255,.03) 0, rgba(255,255,255,.03) 1px, transparent 1px, transparent 80px);
+      pointer-events: none;
+    }
+
+    /* Decorative circle (handball) */
+    .hero-ball {
+      position: absolute; right: -120px; top: 50%; transform: translateY(-55%);
+      width: min(600px, 80vw); height: min(600px, 80vw);
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, rgba(245,166,35,.18) 0%, rgba(196,30,58,.12) 60%, transparent 100%);
+      border: 1px solid rgba(245,166,35,.1);
+      pointer-events: none;
+    }
+    .hero-ball::after {
+      content: ''; position: absolute; inset: 40px;
+      border-radius: 50%; border: 1px solid rgba(245,166,35,.08);
+    }
+
+    .hero-inner { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; width: 100%; }
+
+    /* Journey motif */
+    .hero-journey {
+      display: flex; align-items: center; gap: 16px; margin-bottom: 32px;
+    }
+    .flag-chip {
+      display: flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,.1); backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 50px; padding: 8px 16px;
+      color: white; font-size: .95rem; font-weight: 600;
+    }
+    .flag-chip .flag { font-size: 1.4rem; line-height: 1; }
+    .journey-arrow {
+      color: var(--gold); display: flex; align-items: center;
+      animation: arrowPulse 2s ease-in-out infinite;
+    }
+    @keyframes arrowPulse {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(6px); }
+    }
+
+    /* Eyebrow */
+    .hero-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: .875rem; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 20px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .hero-eyebrow::after { content: ''; flex: 1; height: 1px; background: var(--gold); opacity: .4; max-width: 80px; }
+
+    h1.hero-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900; line-height: 1.05;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      color: white; margin-bottom: 24px; max-width: 16ch;
+    }
+    h1.hero-title .highlight { color: var(--gold); }
+
+    .hero-body {
+      font-size: clamp(.975rem, 2vw, 1.1rem); line-height: 1.8;
+      color: rgba(255,255,255,.82); max-width: 60ch; margin-bottom: 40px;
+    }
+
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; }
+
+    /* Image placeholder */
+    .hero-img-placeholder {
+      position: absolute; right: 0; top: 0; bottom: 0; width: 42%;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, rgba(245,166,35,.08), rgba(196,30,58,.08));
+      border-left: 1px solid rgba(255,255,255,.06);
+    }
+    .hero-img-inner {
+      width: 85%; aspect-ratio: 4/3;
+      background: rgba(255,255,255,.05);
+      border: 2px dashed rgba(245,166,35,.3);
+      border-radius: var(--radius);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 12px; padding: 32px;
+      text-align: center;
+    }
+    .placeholder-icon { color: var(--gold); opacity: .6; }
+    .placeholder-label {
+      font-size: .875rem; color: rgba(255,255,255,.5); line-height: 1.5;
+    }
+
+    /* ─────────────────────────────────────────
+       § 2  ELITE PERFORMANCE
+    ───────────────────────────────────────── */
+    #performance { background: var(--off-white); }
+
+    .achievements {
+      display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 48px;
+    }
+    .achievement-badge {
+      display: flex; align-items: center; gap: 12px;
+      background: white; border-radius: var(--radius);
+      padding: 16px 24px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .achievement-badge:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+    .badge-icon {
+      width: 48px; height: 48px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .badge-icon.gold { background: linear-gradient(135deg, #FFD700, #F5A623); }
+    .badge-icon.bronze { background: linear-gradient(135deg, #CD7F32, #A0522D); }
+    .badge-icon.world { background: linear-gradient(135deg, var(--navy), var(--navy-lt)); }
+    .badge-text { font-weight: 700; font-size: .95rem; color: var(--navy); line-height: 1.3; }
+    .badge-sub { font-size: .8rem; color: var(--muted); font-weight: 400; }
+
+    .performance-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+    }
+    .performance-text p { font-size: 1.05rem; color: var(--muted); line-height: 1.85; }
+
+    .performance-img-placeholder {
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, rgba(196,30,58,.06), rgba(26,46,90,.08));
+      border: 2px dashed rgba(26,46,90,.2);
+      border-radius: var(--radius);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 12px; padding: 32px; text-align: center; color: var(--muted);
+    }
+    .performance-img-placeholder svg { color: var(--navy); opacity: .3; }
+
+    /* Stats strip */
+    .stats-strip {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border); border-radius: var(--radius);
+      overflow: hidden; margin-top: 48px;
+    }
+    .stat-item {
+      background: white; padding: 32px 24px; text-align: center;
+    }
+    .stat-number {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900; font-size: 3rem; line-height: 1;
+      color: var(--red); margin-bottom: 6px;
+    }
+    .stat-label { font-size: .9rem; color: var(--muted); font-weight: 500; }
+
+    /* ─────────────────────────────────────────
+       § 3  MISSION & BUDGET
+    ───────────────────────────────────────── */
+    #mission { background: var(--white); }
+
+    .mission-intro {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;
+      margin-bottom: 64px;
+    }
+    .mission-intro p { font-size: 1.05rem; color: var(--muted); line-height: 1.85; }
+
+    .mission-highlights {
+      display: flex; flex-direction: column; gap: 20px;
+    }
+    .highlight-card {
+      display: flex; align-items: flex-start; gap: 16px;
+      padding: 20px 24px; border-radius: var(--radius);
+      background: var(--off-white); border-left: 4px solid var(--red);
+    }
+    .highlight-card svg { color: var(--red); flex-shrink: 0; margin-top: 2px; }
+    .highlight-card-title { font-weight: 700; font-size: 1rem; color: var(--navy); margin-bottom: 4px; }
+    .highlight-card-desc { font-size: .9rem; color: var(--muted); line-height: 1.6; }
+
+    /* Goal progress */
+    .goal-box {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-lt) 100%);
+      border-radius: 20px; padding: 48px; color: white; margin-bottom: 48px;
+      position: relative; overflow: hidden;
+    }
+    .goal-box::before {
+      content: ''; position: absolute;
+      right: -60px; top: -60px; width: 240px; height: 240px;
+      border-radius: 50%;
+      background: rgba(245,166,35,.1);
+      pointer-events: none;
+    }
+    .goal-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .875rem; letter-spacing: .15em; text-transform: uppercase;
+      color: rgba(255,255,255,.6); margin-bottom: 8px;
+    }
+    .goal-amount {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900; font-size: clamp(2.4rem, 6vw, 3.6rem);
+      color: var(--gold); line-height: 1; margin-bottom: 8px;
+    }
+    .goal-sub { color: rgba(255,255,255,.7); font-size: .95rem; margin-bottom: 32px; }
+    .progress-track {
+      background: rgba(255,255,255,.15); border-radius: 50px;
+      height: 16px; overflow: hidden; margin-bottom: 12px;
+    }
+    .progress-fill {
+      height: 100%; border-radius: 50px;
+      background: linear-gradient(90deg, var(--gold), var(--red));
+      width: 0%;
+      transition: width 1.8s cubic-bezier(.4,0,.2,1);
+      position: relative;
+    }
+    .progress-fill::after {
+      content: ''; position: absolute; right: 0; top: 0; bottom: 0; width: 4px;
+      background: white; border-radius: 50px;
+      box-shadow: 0 0 12px rgba(255,255,255,.8);
+    }
+    .progress-meta {
+      display: flex; justify-content: space-between;
+      font-size: .875rem; color: rgba(255,255,255,.65);
+    }
+    .progress-pct { font-weight: 700; color: var(--gold); }
+
+    /* Budget bars */
+    .budget-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800; font-size: 1.5rem; color: var(--navy); margin-bottom: 28px;
+    }
+    .budget-items { display: flex; flex-direction: column; gap: 20px; }
+    .budget-item {}
+    .budget-item-header {
+      display: flex; justify-content: space-between; align-items: baseline;
+      margin-bottom: 8px;
+    }
+    .budget-item-name { font-weight: 600; font-size: .95rem; color: var(--navy); }
+    .budget-item-pct { font-weight: 700; font-size: .875rem; color: var(--red); }
+    .budget-bar-track {
+      background: #EEF2F7; border-radius: 50px; height: 10px; overflow: hidden;
+    }
+    .budget-bar-fill {
+      height: 100%; border-radius: 50px; width: 0%;
+      transition: width 1.4s cubic-bezier(.4,0,.2,1);
+    }
+    .c1 { background: linear-gradient(90deg, var(--red), var(--red-lt)); }
+    .c2 { background: linear-gradient(90deg, #2563EB, #3B82F6); }
+    .c3 { background: linear-gradient(90deg, #059669, #34D399); }
+    .c4 { background: linear-gradient(90deg, var(--gold), var(--gold-lt)); }
+    .c5 { background: linear-gradient(90deg, #7C3AED, #A78BFA); }
+
+    /* ─────────────────────────────────────────
+       § 4  COMMUNITY SUPPORT
+    ───────────────────────────────────────── */
+    #support { background: var(--off-white); }
+
+    .support-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+    }
+    .support-card {
+      background: white; border-radius: 20px; padding: 40px 32px;
+      border: 1px solid var(--border); box-shadow: var(--shadow);
+      transition: transform .25s, box-shadow .25s;
+      cursor: default;
+    }
+    .support-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .support-card-icon {
+      width: 56px; height: 56px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 24px;
+    }
+    .icon-red { background: rgba(196,30,58,.1); color: var(--red); }
+    .icon-navy { background: rgba(26,46,90,.1); color: var(--navy); }
+    .icon-gold { background: rgba(245,166,35,.15); color: #B45309; }
+    .support-card-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800; font-size: 1.4rem; color: var(--navy); margin-bottom: 12px;
+    }
+    .support-card-desc { font-size: .95rem; color: var(--muted); line-height: 1.75; }
+    .support-card-tag {
+      display: inline-block; margin-top: 20px;
+      padding: 6px 14px; border-radius: 50px; font-size: .8rem; font-weight: 700;
+    }
+    .tag-red { background: rgba(196,30,58,.1); color: var(--red); }
+    .tag-navy { background: rgba(26,46,90,.1); color: var(--navy); }
+    .tag-gold { background: rgba(245,166,35,.15); color: #92400E; }
+
+    /* Quote strip */
+    .quote-strip {
+      margin-top: 64px;
+      background: linear-gradient(135deg, var(--red-dk), var(--red));
+      border-radius: 20px; padding: 48px;
+      text-align: center; color: white;
+    }
+    .quote-mark {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 5rem; line-height: .8; color: rgba(255,255,255,.2);
+      margin-bottom: 16px;
+    }
+    .quote-text {
+      font-size: clamp(1.2rem, 3vw, 1.6rem); font-weight: 600;
+      line-height: 1.6; max-width: 36ch; margin: 0 auto 16px;
+    }
+    .quote-author { color: rgba(255,255,255,.65); font-size: .9rem; }
+
+    /* ─────────────────────────────────────────
+       § 5  CALL TO ACTION
+    ───────────────────────────────────────── */
+    #cta { background: var(--white); }
+
+    .cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+
+    /* Process steps */
+    .process-steps { display: flex; flex-direction: column; gap: 0; }
+    .step {
+      display: flex; gap: 20px; padding-bottom: 36px;
+      position: relative;
+    }
+    .step:not(:last-child)::before {
+      content: ''; position: absolute;
+      left: 19px; top: 44px; bottom: 0; width: 2px;
+      background: linear-gradient(to bottom, var(--red), var(--border));
+    }
+    .step-num {
+      width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
+      background: var(--red); color: white;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800; font-size: 1.1rem;
+      box-shadow: 0 4px 12px rgba(196,30,58,.3);
+      position: relative; z-index: 1;
+    }
+    .step-content {}
+    .step-title { font-weight: 700; font-size: 1rem; color: var(--navy); margin-bottom: 6px; }
+    .step-desc { font-size: .9rem; color: var(--muted); line-height: 1.65; }
+
+    /* Contact card */
+    .contact-card {
+      background: linear-gradient(135deg, var(--navy-dk), var(--navy));
+      border-radius: 20px; padding: 48px; color: white;
+    }
+    .contact-school {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 1.1rem; color: var(--gold);
+      letter-spacing: .05em; margin-bottom: 6px;
+    }
+    .contact-school-name {
+      font-weight: 700; font-size: 1.4rem; color: white; margin-bottom: 32px;
+    }
+    .contact-person {
+      display: flex; align-items: center; gap: 16px;
+      background: rgba(255,255,255,.08); border-radius: var(--radius);
+      padding: 20px; margin-bottom: 32px;
+    }
+    .person-avatar {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: rgba(245,166,35,.2);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold); flex-shrink: 0;
+    }
+    .person-name { font-weight: 700; font-size: 1.1rem; color: white; }
+    .person-role { font-size: .875rem; color: rgba(255,255,255,.6); }
+    .person-phone {
+      display: flex; align-items: center; gap: 8px;
+      font-size: .95rem; color: var(--gold); font-weight: 600;
+      margin-top: 4px;
+    }
+
+    .contact-actions { display: flex; flex-direction: column; gap: 12px; }
+    .contact-btn {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 16px 24px; border-radius: 50px; border: none;
+      font-family: 'Noto Sans TC', sans-serif; font-weight: 700; font-size: 1rem;
+      cursor: pointer; text-decoration: none;
+      transition: transform .2s, box-shadow .2s, background .2s;
+      width: 100%;
+    }
+    .contact-btn:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+    .contact-btn:hover { transform: translateY(-2px); }
+    .contact-btn-primary {
+      background: var(--gold); color: var(--navy);
+      box-shadow: 0 6px 24px rgba(245,166,35,.4);
+    }
+    .contact-btn-primary:hover { box-shadow: 0 10px 32px rgba(245,166,35,.5); }
+    .contact-btn-outline {
+      background: transparent; color: white;
+      border: 2px solid rgba(255,255,255,.3);
+    }
+    .contact-btn-outline:hover { background: rgba(255,255,255,.1); }
+    .contact-btn svg { width: 20px; height: 20px; flex-shrink: 0; }
+
+    /* ── Bank info modal ── */
+    .modal-backdrop {
+      position: fixed; inset: 0; background: rgba(0,0,0,.6);
+      backdrop-filter: blur(4px); z-index: 200;
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px; opacity: 0; pointer-events: none;
+      transition: opacity .25s;
+    }
+    .modal-backdrop.open { opacity: 1; pointer-events: all; }
+    .modal {
+      background: white; border-radius: 20px; padding: 48px;
+      max-width: 560px; width: 100%;
+      box-shadow: 0 32px 80px rgba(0,0,0,.3);
+      transform: translateY(20px);
+      transition: transform .25s;
+    }
+    .modal-backdrop.open .modal { transform: translateY(0); }
+    .modal-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900; font-size: 1.8rem; color: var(--navy); margin-bottom: 24px;
+    }
+    .bank-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 0; border-bottom: 1px solid var(--border);
+    }
+    .bank-row:last-of-type { border-bottom: none; }
+    .bank-key { font-size: .875rem; color: var(--muted); }
+    .bank-val { font-weight: 700; font-size: 1rem; color: var(--navy); }
+    .modal-note {
+      background: rgba(245,166,35,.1); border-left: 4px solid var(--gold);
+      border-radius: 0 8px 8px 0; padding: 16px; margin-top: 24px;
+      font-size: .875rem; color: #92400E; line-height: 1.65;
+    }
+    .modal-close {
+      display: block; margin-top: 24px; padding: 14px;
+      border-radius: 50px; border: 2px solid var(--border);
+      background: white; font-family: 'Noto Sans TC', sans-serif;
+      font-weight: 700; font-size: 1rem; color: var(--muted);
+      cursor: pointer; width: 100%;
+      transition: border-color .2s, color .2s;
+    }
+    .modal-close:hover { border-color: var(--navy); color: var(--navy); }
+    .modal-close:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--navy-dk); color: rgba(255,255,255,.5);
+      text-align: center; padding: 32px 24px;
+      font-size: .875rem; line-height: 1.8;
+    }
+    footer strong { color: rgba(255,255,255,.8); }
+
+    /* ── Scroll reveal ── */
+    .reveal {
+      opacity: 0; transform: translateY(32px);
+      transition: opacity .7s cubic-bezier(.4,0,.2,1), transform .7s cubic-bezier(.4,0,.2,1);
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .performance-grid { grid-template-columns: 1fr; }
+      .hero-img-placeholder { display: none; }
+      .mission-intro { grid-template-columns: 1fr; gap: 40px; }
+      .cta-grid { grid-template-columns: 1fr; gap: 48px; }
+    }
+
+    @media (max-width: 768px) {
+      .section { padding: 72px 20px; }
+      .support-grid { grid-template-columns: 1fr; }
+      .stats-strip { grid-template-columns: 1fr; }
+      .achievements { flex-direction: column; }
+      .goal-box { padding: 32px 24px; }
+      .contact-card { padding: 32px 24px; }
+      .modal { padding: 32px 24px; }
+      .sticky-cta { bottom: 16px; right: 16px; }
+    }
+
+    @media (max-width: 480px) {
+      h1.hero-title { font-size: 2rem; }
+      h2.section-title { font-size: 1.8rem; }
+      .hero-actions { flex-direction: column; }
+      .hero-actions .btn { justify-content: center; }
+      .stats-strip { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Skip link -->
+  <a href="#main" class="skip-link">跳至主要內容</a>
+
+  <!-- ── Sticky CTA ── -->
+  <div class="sticky-cta" id="stickyCta" aria-label="快捷捐款按鈕">
+    <button class="sticky-btn sticky-btn-primary" onclick="openModal()" aria-label="查看匯款資訊">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/>
+      </svg>
+      立即支持
+    </button>
+  </div>
+
+  <main id="main">
+
+    <!-- ════════════════════════════════════
+         § 1  HERO
+    ════════════════════════════════════ -->
+    <section id="hero" aria-labelledby="heroTitle">
+      <div class="hero-ball" aria-hidden="true"></div>
+
+      <div class="hero-inner">
+        <!-- Journey motif -->
+        <div class="hero-journey" aria-label="從台灣到丹麥的旅程">
+          <div class="flag-chip">
+            <span class="flag" aria-label="台灣">🇹🇼</span>
+            <span>台灣</span>
+          </div>
+          <div class="journey-arrow" aria-hidden="true">
+            <svg width="32" height="16" viewBox="0 0 32 16" fill="currentColor">
+              <path d="M0 7h26m0 0-6-6m6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="flag-chip">
+            <span class="flag" aria-label="丹麥">🇩🇰</span>
+            <span>丹麥維堡</span>
+          </div>
+        </div>
+
+        <div class="hero-eyebrow">2026 國際手球分齡賽</div>
+
+        <h1 class="hero-title" id="heroTitle">
+          支持崇倫國中<br/>
+          <span class="highlight">女子手球隊</span><br/>
+          出征丹麥
+        </h1>
+
+        <p class="hero-body">
+          在 115 年全國手球比賽中，這群孩子展現了團隊默契與韌性，奪得全國錦標賽 U13 女子組冠軍與全國師生盃 U15 女子組季軍。透過這份卓越的競技表現，她們獲得中華民國手球協會正式推薦，即將出征 2026 年丹麥維堡國際手球分齡賽。孩子們準備好了，只差最後一步支持——我們誠摯邀請您，成為她們邁向世界巔峰的關鍵力量。
+        </p>
+
+        <div class="hero-actions">
+          <button class="btn btn-gold" onclick="openModal()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="20" height="20">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+            立即捐款支持
+          </button>
+          <a href="#performance" class="btn btn-secondary" style="color:rgba(255,255,255,.85);border-color:rgba(255,255,255,.35);">
+            了解更多
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="20" height="20">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Hero image placeholder (desktop only) -->
+      <div class="hero-img-placeholder" aria-hidden="true">
+        <div class="hero-img-inner">
+          <div class="placeholder-icon">
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <circle cx="12" cy="12" r="3"/>
+              <line x1="12" y1="2" x2="12" y2="9"/>
+              <line x1="12" y1="15" x2="12" y2="22"/>
+              <line x1="2" y1="12" x2="9" y2="12"/>
+              <line x1="15" y1="12" x2="22" y2="12"/>
+            </svg>
+          </div>
+          <p class="placeholder-label">放置球隊獲得全國冠軍時<br/>的隊伍大合照</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════
+         § 2  ELITE PERFORMANCE
+    ════════════════════════════════════ -->
+    <section id="performance" class="section" aria-labelledby="perfTitle">
+      <div class="container">
+        <div class="section-label" aria-hidden="true">實力印證</div>
+
+        <!-- Achievement badges -->
+        <div class="achievements reveal" role="list" aria-label="獲獎紀錄">
+          <div class="achievement-badge" role="listitem">
+            <div class="badge-icon gold" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
+              </svg>
+            </div>
+            <div>
+              <div class="badge-text">全國錦標賽冠軍</div>
+              <div class="badge-sub">U13 女子組</div>
+            </div>
+          </div>
+          <div class="achievement-badge" role="listitem">
+            <div class="badge-icon bronze" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
+              </svg>
+            </div>
+            <div>
+              <div class="badge-text">全國師生盃季軍</div>
+              <div class="badge-sub">U15 女子組</div>
+            </div>
+          </div>
+          <div class="achievement-badge" role="listitem">
+            <div class="badge-icon world" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="badge-text">代表台灣出征丹麥</div>
+              <div class="badge-sub">中華民國手球協會正式推薦</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Two column: text + image -->
+        <div class="performance-grid">
+          <div class="performance-text reveal">
+            <h2 class="section-title" id="perfTitle">從區域奪冠到全國頂尖，見證這群選手的成長與蛻變</h2>
+            <p class="section-subtitle">長期深耕體育專長，在汗水中淬鍊出接軌國際的競爭力。</p>
+            <p>崇倫國中女子手球隊長期投入專長訓練，已建立起高度自律與團隊默契。儘管過程艱辛，這群孩子依然保持高強度的練習節奏，在場上實踐永不放棄的體育精神。這份亮眼的戰績，不僅證明了孩子們的努力，更讓她們獲得正式推薦，承擔代表國家出征丹麥維堡國際賽的使命。</p>
+          </div>
+          <div class="performance-img-placeholder reveal" aria-label="球員在賽場上拼搏的照片（圖片待放置）" role="img">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/>
+            </svg>
+            <p style="color:var(--muted);font-size:.875rem;">放置球員在賽場上<br/>拼搏的精彩動態特寫</p>
+          </div>
+        </div>
+
+        <!-- Stats strip -->
+        <div class="stats-strip reveal" role="list" aria-label="重要數據">
+          <div class="stat-item" role="listitem">
+            <div class="stat-number" aria-label="15名球員">15</div>
+            <div class="stat-label">名優秀球員</div>
+          </div>
+          <div class="stat-item" role="listitem">
+            <div class="stat-number" aria-label="15天行程">15</div>
+            <div class="stat-label">天國際賽程</div>
+          </div>
+          <div class="stat-item" role="listitem">
+            <div class="stat-number" aria-label="1個夢想">1</div>
+            <div class="stat-label">個台灣之光的夢想</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════
+         § 3  MISSION & BUDGET
+    ════════════════════════════════════ -->
+    <section id="mission" class="section" aria-labelledby="missionTitle">
+      <div class="container">
+        <div class="section-label" aria-hidden="true">出征計畫</div>
+        <div class="mission-intro">
+          <div>
+            <h2 class="section-title" id="missionTitle">逐夢歐洲：<br/>經費預算透明化說明</h2>
+            <p class="section-subtitle">每一分資源，都將精準轉化為支持孩子前進的動能。</p>
+            <p>本次國際賽事行程共計 15 天，包含參賽、技術交流與異地訓練。總經費預估需 <strong>2,025,000 元</strong>，主要包含隊職員旅費、競賽裝備及必要保險。除了政府提供的部分補助，我們誠摯尋求各界的參與，協助分擔剩餘的資金缺口，確保 15 名優秀球員能專注於競技場，無後顧之憂地追逐國際夢想。</p>
+          </div>
+          <div class="mission-highlights reveal">
+            <div class="highlight-card">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+              </svg>
+              <div>
+                <div class="highlight-card-title">丹麥維堡</div>
+                <div class="highlight-card-desc">2026 國際手球分齡賽主辦地點</div>
+              </div>
+            </div>
+            <div class="highlight-card">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+              <div>
+                <div class="highlight-card-title">行程 15 天</div>
+                <div class="highlight-card-desc">參賽、技術交流與異地訓練全包含</div>
+              </div>
+            </div>
+            <div class="highlight-card">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+              <div>
+                <div class="highlight-card-title">15 名選手</div>
+                <div class="highlight-card-desc">中華民國手球協會正式推薦出賽</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fundraising progress -->
+        <div class="goal-box reveal" role="region" aria-labelledby="goalLabel">
+          <div class="goal-label" id="goalLabel">募款目標</div>
+          <div class="goal-amount" aria-label="新台幣兩百零二萬五千元">NT$ 2,025,000</div>
+          <div class="goal-sub">政府補助 + 社會各界支持 = 孩子無後顧之憂</div>
+          <div class="progress-track" role="progressbar" aria-valuenow="32" aria-valuemin="0" aria-valuemax="100" aria-label="募款進度 32%">
+            <div class="progress-fill" id="progressFill" style="width:0%"></div>
+          </div>
+          <div class="progress-meta">
+            <span>已獲支持 <span class="progress-pct" id="progressPct">0%</span></span>
+            <span>目標 NT$2,025,000</span>
+          </div>
+        </div>
+
+        <!-- Budget breakdown -->
+        <div class="reveal">
+          <div class="budget-title">經費項目分配</div>
+          <div class="budget-items" role="list" aria-label="各項費用比例">
+            <div class="budget-item" role="listitem">
+              <div class="budget-item-header">
+                <span class="budget-item-name">機票與交通</span>
+                <span class="budget-item-pct">40%</span>
+              </div>
+              <div class="budget-bar-track">
+                <div class="budget-bar-fill c1" data-width="40" style="width:0%"></div>
+              </div>
+            </div>
+            <div class="budget-item" role="listitem">
+              <div class="budget-item-header">
+                <span class="budget-item-name">食宿費用</span>
+                <span class="budget-item-pct">30%</span>
+              </div>
+              <div class="budget-bar-track">
+                <div class="budget-bar-fill c2" data-width="30" style="width:0%"></div>
+              </div>
+            </div>
+            <div class="budget-item" role="listitem">
+              <div class="budget-item-header">
+                <span class="budget-item-name">訓練費用</span>
+                <span class="budget-item-pct">15%</span>
+              </div>
+              <div class="budget-bar-track">
+                <div class="budget-bar-fill c3" data-width="15" style="width:0%"></div>
+              </div>
+            </div>
+            <div class="budget-item" role="listitem">
+              <div class="budget-item-header">
+                <span class="budget-item-name">競賽裝備</span>
+                <span class="budget-item-pct">10%</span>
+              </div>
+              <div class="budget-bar-track">
+                <div class="budget-bar-fill c4" data-width="10" style="width:0%"></div>
+              </div>
+            </div>
+            <div class="budget-item" role="listitem">
+              <div class="budget-item-header">
+                <span class="budget-item-name">競賽保險</span>
+                <span class="budget-item-pct">5%</span>
+              </div>
+              <div class="budget-bar-track">
+                <div class="budget-bar-fill c5" data-width="5" style="width:0%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════
+         § 4  COMMUNITY SUPPORT
+    ════════════════════════════════════ -->
+    <section id="support" class="section" aria-labelledby="supportTitle">
+      <div class="container">
+        <div class="section-label" aria-hidden="true">各界支持</div>
+        <div style="text-align:center; margin-bottom:16px">
+          <h2 class="section-title" id="supportTitle" style="display:inline-block;">凝聚各界力量：<br/>不論金額大小，都是孩子最強大的後盾</h2>
+        </div>
+        <p class="section-subtitle" style="text-align:center;margin:0 auto 48px;">您的每一分支持，都是這群選手奪冠道路上最溫暖的動力。</p>
+
+        <div class="support-grid">
+          <!-- Card 1: Personal -->
+          <div class="support-card reveal">
+            <div class="support-card-icon icon-red" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </div>
+            <div class="support-card-title">個人捐款</div>
+            <p class="support-card-desc">不限金額，每一筆捐款都代表著社會對基層體育的關懷與信任，讓孩子感受到被支持的幸福。</p>
+            <span class="support-card-tag tag-red">任何金額均歡迎</span>
+          </div>
+
+          <!-- Card 2: CSR -->
+          <div class="support-card reveal" style="transition-delay:.1s">
+            <div class="support-card-icon icon-navy" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+                <line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/>
+              </svg>
+            </div>
+            <div class="support-card-title">企業贊助 CSR</div>
+            <p class="support-card-desc">邀請企業透過贊助實踐 CSR 精神，協助培育具國際視野的青年才俊，品牌標誌將於賽事紀錄與相關文宣中呈現。</p>
+            <span class="support-card-tag tag-navy">品牌曝光機會</span>
+          </div>
+
+          <!-- Card 3: Community -->
+          <div class="support-card reveal" style="transition-delay:.2s">
+            <div class="support-card-icon icon-gold" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <div class="support-card-title">共同培育未來</div>
+            <p class="support-card-desc">不論是實質的經費挹注或是一句鼓勵，您的參與將深植於這群孩子心中，成為她們為台灣爭光時的底氣。</p>
+            <span class="support-card-tag tag-gold">每份心意都珍貴</span>
+          </div>
+        </div>
+
+        <!-- Quote strip -->
+        <div class="quote-strip reveal">
+          <div class="quote-mark" aria-hidden="true">"</div>
+          <p class="quote-text">孩子們準備好了，只差最後一步支持。我們誠摯邀請您，成為她們邁向世界巔峰的關鍵力量。</p>
+          <p class="quote-author">— 崇倫國中女子手球隊</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════
+         § 5  CALL TO ACTION
+    ════════════════════════════════════ -->
+    <section id="cta" class="section" aria-labelledby="ctaTitle">
+      <div class="container">
+        <div class="section-label" aria-hidden="true">行動呼籲</div>
+        <div style="text-align:center; margin-bottom:64px">
+          <h2 class="section-title" id="ctaTitle">成為她們的後盾，<br/>讓台灣手球發光發熱</h2>
+          <p class="section-subtitle" style="margin:0 auto;">若您願意給予這群孩子支持，請透過以下流程與校方聯繫。</p>
+        </div>
+
+        <div class="cta-grid">
+          <!-- Process steps -->
+          <div class="reveal">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.5rem;color:var(--navy);margin-bottom:32px;">贊助流程</div>
+            <div class="process-steps" role="list" aria-label="贊助步驟">
+              <div class="step" role="listitem">
+                <div class="step-num" aria-label="步驟一">1</div>
+                <div class="step-content">
+                  <div class="step-title">聯繫教練或學校</div>
+                  <div class="step-desc">透過電話聯繫顏國松教練，或直接與台中市立崇倫國民中學聯繫，告知捐款意願。</div>
+                </div>
+              </div>
+              <div class="step" role="listitem">
+                <div class="step-num" aria-label="步驟二">2</div>
+                <div class="step-content">
+                  <div class="step-title">確認匯款資訊</div>
+                  <div class="step-desc">款項將匯至崇倫國中保管金專戶，由校方提供正式的匯款帳號資訊。</div>
+                </div>
+              </div>
+              <div class="step" role="listitem">
+                <div class="step-num" aria-label="步驟三">3</div>
+                <div class="step-content">
+                  <div class="step-title">完成捐款</div>
+                  <div class="step-desc">完成匯款後，請告知教練或學校，以便登記捐款人資訊。</div>
+                </div>
+              </div>
+              <div class="step" role="listitem">
+                <div class="step-num" aria-label="步驟四">4</div>
+                <div class="step-content">
+                  <div class="step-title">收取正式收據與成果報告</div>
+                  <div class="step-desc">校方將開立正式領據並按程序核銷，同時製作成果報告回饋每一位支持者。</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact card -->
+          <div class="contact-card reveal" style="transition-delay:.15s">
+            <div class="contact-school">學校單位</div>
+            <div class="contact-school-name">台中市立崇倫國民中學</div>
+
+            <div class="contact-person">
+              <div class="person-avatar" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                </svg>
+              </div>
+              <div>
+                <div class="person-name">顏國松 教練</div>
+                <div class="person-role">崇倫國中女子手球隊</div>
+                <div class="person-phone">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.39 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.79a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                  </svg>
+                  <a href="tel:0980521741" style="color:inherit;text-decoration:none;" aria-label="撥打電話給顏國松教練">0980-521741</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-actions">
+              <button class="contact-btn contact-btn-primary" onclick="openModal()" aria-label="查看匯款資訊">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/>
+                </svg>
+                查看匯款資訊
+              </button>
+              <a href="tel:0980521741" class="contact-btn contact-btn-outline" aria-label="立即致電教練完成捐款聯繫">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.39 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.79a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+                完成捐款聯繫
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <strong>台中市立崇倫國民中學 女子手球隊</strong><br/>
+    2026 丹麥維堡國際手球分齡賽 征戰計畫<br/>
+    聯絡教練：顏國松 <a href="tel:0980521741" style="color:rgba(255,255,255,.7);">0980-521741</a>
+  </footer>
+
+  <!-- ── Bank info modal ── -->
+  <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
+    <div class="modal">
+      <h2 class="modal-title" id="modalTitle">匯款資訊</h2>
+      <div role="list" aria-label="匯款帳號資訊">
+        <div class="bank-row" role="listitem">
+          <span class="bank-key">戶名</span>
+          <span class="bank-val">台中市立崇倫國民中學</span>
+        </div>
+        <div class="bank-row" role="listitem">
+          <span class="bank-key">帳戶性質</span>
+          <span class="bank-val">保管金專戶</span>
+        </div>
+        <div class="bank-row" role="listitem">
+          <span class="bank-key">聯絡教練</span>
+          <span class="bank-val">顏國松 0980-521741</span>
+        </div>
+      </div>
+      <div class="modal-note">
+        <strong>注意事項：</strong>請先聯繫教練取得正確帳號資訊後再行匯款。校方將開立正式領據，並按程序核銷，同時製作成果報告回饋每一位支持者。
+      </div>
+      <button class="modal-close" onclick="closeModal()">關閉</button>
+    </div>
+  </div>
+
+  <script>
+    // ── Scroll reveal ──
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          // Trigger budget bars when mission section visible
+          if (e.target.closest('#mission')) animateBudgetBars();
+          if (e.target.closest('#mission') && e.target.classList.contains('goal-box') === false) {}
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => observer.observe(el));
+
+    // ── Progress bar animation ──
+    let progressAnimated = false;
+    const progressObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting && !progressAnimated) {
+          progressAnimated = true;
+          animateProgress(32);
+        }
+      });
+    }, { threshold: 0.3 });
+    const goalBox = document.querySelector('.goal-box');
+    if (goalBox) progressObserver.observe(goalBox);
+
+    function animateProgress(targetPct) {
+      const fill = document.getElementById('progressFill');
+      const pctLabel = document.getElementById('progressPct');
+      let current = 0;
+      const step = targetPct / 60;
+      const timer = setInterval(() => {
+        current = Math.min(current + step, targetPct);
+        fill.style.width = current + '%';
+        pctLabel.textContent = Math.round(current) + '%';
+        if (current >= targetPct) clearInterval(timer);
+      }, 25);
+    }
+
+    // ── Budget bar animation ──
+    let budgetAnimated = false;
+    function animateBudgetBars() {
+      if (budgetAnimated) return;
+      budgetAnimated = true;
+      document.querySelectorAll('.budget-bar-fill').forEach((bar, i) => {
+        const w = bar.dataset.width;
+        setTimeout(() => { bar.style.width = w + '%'; }, i * 120);
+      });
+    }
+    const budgetSection = document.querySelector('#mission .budget-items');
+    if (budgetSection) {
+      const budgetObserver = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) animateBudgetBars(); });
+      }, { threshold: 0.2 });
+      budgetObserver.observe(budgetSection);
+    }
+
+    // ── Sticky CTA hide on hero ──
+    const stickyCta = document.getElementById('stickyCta');
+    const hero = document.getElementById('hero');
+    const ctaObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        stickyCta.classList.toggle('hidden', e.isIntersecting);
+      });
+    }, { threshold: 0.1 });
+    if (hero) ctaObserver.observe(hero);
+
+    // ── Modal ──
+    function openModal() {
+      const backdrop = document.getElementById('modalBackdrop');
+      backdrop.classList.add('open');
+      backdrop.focus();
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+      document.getElementById('modalBackdrop').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('modalBackdrop').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+  </script>
+</body>
+</html>
