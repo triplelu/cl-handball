@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>崇倫國中女子手球隊 — 2026 丹麥維堡國際賽募款</title>
+  <title>崇倫國中女子手球隊 — 2026 丹麥維堡國際賽募款【版本1】</title>
   <meta name="description" content="支持崇倫國中女子手球隊出征 2026 年丹麥維堡國際手球分齡賽，讓台灣之光在世界舞台發光！" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -205,29 +205,24 @@
 
     /* Image placeholder */
     .hero-img-placeholder {
-      position: absolute; right: 0; top: 0; bottom: 0; width: 42%;
+      position: absolute; right: 0; top: 0; bottom: 0; width: 44%;
       display: flex; align-items: center; justify-content: center;
-      background: linear-gradient(135deg, rgba(245,166,35,.08), rgba(196,30,58,.08));
+      padding: 32px 24px 32px 0;
+      background: linear-gradient(135deg, rgba(245,166,35,.04), rgba(196,30,58,.06));
       border-left: 1px solid rgba(255,255,255,.06);
     }
-    .hero-img-inner {
-      width: 85%; aspect-ratio: 4/3;
-      background: rgba(255,255,255,.05);
-      border: 2px dashed rgba(245,166,35,.3);
-      border-radius: var(--radius);
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 12px; padding: 32px;
-      text-align: center;
-    }
-    .placeholder-icon { color: var(--gold); opacity: .6; }
-    .placeholder-label {
-      font-size: .875rem; color: rgba(255,255,255,.5); line-height: 1.5;
+    .hero-real-img {
+      width: 100%; height: auto;
+      object-fit: contain; border-radius: 14px;
+      box-shadow: 0 24px 64px rgba(0,0,0,.5);
+      border: 3px solid rgba(245,166,35,.25);
+      max-height: calc(100vh - 80px);
     }
 
     /* ─────────────────────────────────────────
        § 2  ELITE PERFORMANCE
     ───────────────────────────────────────── */
-    #performance { background: var(--off-white); }
+    #performance { background: #F0F4FA; }  /* 淡藍灰 */
 
     .achievements {
       display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 48px;
@@ -287,7 +282,7 @@
     /* ─────────────────────────────────────────
        § 3  MISSION & BUDGET
     ───────────────────────────────────────── */
-    #mission { background: var(--white); }
+    #mission { background: #FFFAF4; }  /* 暖米色 */
 
     .mission-intro {
       display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;
@@ -382,7 +377,7 @@
     /* ─────────────────────────────────────────
        § 4  COMMUNITY SUPPORT
     ───────────────────────────────────────── */
-    #support { background: var(--off-white); }
+    #support { background: #FDF2F4; }  /* 淡玫瑰紅 */
 
     .support-grid {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
@@ -436,7 +431,7 @@
     /* ─────────────────────────────────────────
        § 5  CALL TO ACTION
     ───────────────────────────────────────── */
-    #cta { background: var(--white); }
+    #cta { background: #F4F6FB; }  /* 淡灰藍 */
 
     .cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
 
@@ -545,8 +540,80 @@
       padding: 14px 0; border-bottom: 1px solid var(--border);
     }
     .bank-row:last-of-type { border-bottom: none; }
-    .bank-key { font-size: .875rem; color: var(--muted); }
-    .bank-val { font-weight: 700; font-size: 1rem; color: var(--navy); }
+    .bank-key { font-size: .875rem; color: var(--muted); flex-shrink: 0; margin-right: 12px; }
+    .bank-val {
+      font-weight: 700; font-size: 1rem; color: var(--navy);
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    /* ── Copy button ── */
+    .copy-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 28px; height: 28px; border-radius: 6px; border: none;
+      background: rgba(26,46,90,.08); color: var(--navy);
+      cursor: pointer; flex-shrink: 0;
+      transition: background .15s, color .15s;
+      position: relative;
+    }
+    .copy-btn:hover { background: var(--navy); color: white; }
+    .copy-btn:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+    .copy-btn svg { width: 14px; height: 14px; pointer-events: none; }
+    .copy-btn .copy-ok { display: none; }
+    .copy-btn.copied .copy-icon { display: none; }
+    .copy-btn.copied .copy-ok { display: block; }
+    .copy-btn.copied { background: #059669; color: white; }
+
+    /* Tooltip */
+    .copy-btn::after {
+      content: attr(data-tip);
+      position: absolute; bottom: calc(100% + 6px); left: 50%;
+      transform: translateX(-50%) scale(.85);
+      background: var(--navy); color: white;
+      font-size: .7rem; font-weight: 600; white-space: nowrap;
+      padding: 4px 8px; border-radius: 6px;
+      opacity: 0; pointer-events: none;
+      transition: opacity .15s, transform .15s;
+    }
+    .copy-btn.copied::after {
+      content: '已複製！';
+      opacity: 1; transform: translateX(-50%) scale(1);
+      background: #059669;
+    }
+
+    /* ── Inline bank card (inside contact-card) ── */
+    .bank-card-inline {
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(245,166,35,.35);
+      border-radius: var(--radius); padding: 20px;
+      margin-bottom: 24px;
+    }
+    .bank-card-inline-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: .75rem; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+    }
+    .bank-card-inline-label svg { width: 14px; height: 14px; }
+    .bank-card-inline-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+    .bank-card-inline-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .bank-card-inline-key { font-size: .8rem; color: rgba(255,255,255,.55); flex-shrink: 0; margin-right: 12px; }
+    .bank-card-inline-val {
+      font-weight: 700; font-size: .9rem; color: white;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .bank-card-inline-val.account {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.05rem; letter-spacing: .04em; color: var(--gold-lt);
+    }
+    /* copy btn on dark bg */
+    .bank-card-inline .copy-btn {
+      background: rgba(255,255,255,.15); color: white;
+    }
+    .bank-card-inline .copy-btn:hover { background: rgba(255,255,255,.3); }
+    .bank-card-inline .copy-btn.copied { background: #059669; color: white; }
     .modal-note {
       background: rgba(245,166,35,.1); border-left: 4px solid var(--gold);
       border-radius: 0 8px 8px 0; padding: 16px; margin-top: 24px;
@@ -562,6 +629,98 @@
     }
     .modal-close:hover { border-color: var(--navy); color: var(--navy); }
     .modal-close:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+
+    /* ── Gallery ── */
+    #gallery { background: var(--navy-dk); }
+    #gallery .section-label { color: var(--gold); }
+    #gallery .section-label::before, #gallery .section-label::after { background: var(--gold); }
+    #gallery h2.section-title { color: white; }
+    #gallery .section-subtitle { color: rgba(255,255,255,.6); }
+
+    .gallery-tabs {
+      display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap;
+    }
+    .gallery-tab {
+      padding: 8px 20px; border-radius: 50px; border: none; cursor: pointer;
+      font-family: 'Noto Sans TC', sans-serif; font-weight: 600; font-size: .875rem;
+      transition: background .2s, color .2s;
+    }
+    .gallery-tab.active { background: var(--gold); color: var(--navy-dk); }
+    .gallery-tab:not(.active) { background: rgba(255,255,255,.1); color: rgba(255,255,255,.7); }
+    .gallery-tab:not(.active):hover { background: rgba(255,255,255,.18); color: white; }
+    .gallery-tab:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+
+    .gallery-grid {
+      columns: 3; column-gap: 12px;
+    }
+    .gallery-item {
+      break-inside: avoid; margin-bottom: 12px;
+      border-radius: 10px; overflow: hidden;
+      cursor: pointer; position: relative;
+    }
+    .gallery-item img {
+      width: 100%; display: block;
+      transition: transform .35s ease, filter .35s ease;
+    }
+    .gallery-item:hover img { transform: scale(1.04); filter: brightness(1.08); }
+    .gallery-item .gallery-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(26,46,90,.7) 0%, transparent 50%);
+      opacity: 0; transition: opacity .3s;
+      display: flex; align-items: flex-end; padding: 16px;
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    .gallery-caption { color: white; font-size: .8rem; font-weight: 600; }
+
+    .gallery-group { display: block; }
+    .gallery-group.hidden { display: none; }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed; inset: 0; background: rgba(0,0,0,.92);
+      z-index: 300; display: flex; align-items: center; justify-content: center;
+      padding: 24px; opacity: 0; pointer-events: none; transition: opacity .25s;
+    }
+    .lightbox.open { opacity: 1; pointer-events: all; }
+    .lightbox img {
+      max-width: 90vw; max-height: 90vh;
+      object-fit: contain; border-radius: 8px;
+      box-shadow: 0 32px 80px rgba(0,0,0,.6);
+    }
+    .lightbox-close {
+      position: absolute; top: 20px; right: 20px;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(255,255,255,.15); border: none; cursor: pointer;
+      color: white; display: flex; align-items: center; justify-content: center;
+      transition: background .2s;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,.3); }
+    .lightbox-close:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+
+    /* Social links */
+    .social-links {
+      display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap;
+    }
+    .social-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 18px; border-radius: 50px;
+      font-family: 'Noto Sans TC', sans-serif; font-weight: 600; font-size: .875rem;
+      text-decoration: none; transition: transform .2s, opacity .2s;
+      border: 1.5px solid rgba(255,255,255,.25); color: white;
+    }
+    .social-link:hover { transform: translateY(-2px); opacity: .9; }
+    .social-link:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+    .social-link svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .social-link.ig { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); border-color: transparent; }
+    .social-link.fb { background: #1877F2; border-color: transparent; }
+    .social-link.email { background: rgba(255,255,255,.1); }
+
+    @media (max-width: 768px) {
+      .gallery-grid { columns: 2; }
+    }
+    @media (max-width: 480px) {
+      .gallery-grid { columns: 1; }
+    }
 
     /* ── Footer ── */
     footer {
@@ -586,9 +745,32 @@
     /* ── Responsive ── */
     @media (max-width: 1024px) {
       .performance-grid { grid-template-columns: 1fr; }
-      .hero-img-placeholder { display: none; }
       .mission-intro { grid-template-columns: 1fr; gap: 40px; }
       .cta-grid { grid-template-columns: 1fr; gap: 48px; }
+
+      /* 手機版：hero 改直排，圖片顯示在文字下方 */
+      #hero {
+        flex-direction: column;
+        justify-content: flex-end;
+        padding-top: 100px;
+        padding-bottom: 40px;
+      }
+      .hero-inner { width: 100%; }
+      .hero-img-placeholder {
+        position: relative;
+        width: 100%; height: auto;
+        border-left: none;
+        padding: 0 0 8px;
+        background: none;
+        justify-content: center;
+        order: -1;               /* 圖片排在文字上方 */
+        flex-shrink: 0;
+      }
+      .hero-real-img {
+        width: 100%; max-height: 260px;
+        object-fit: contain;
+        border-radius: 12px;
+      }
     }
 
     @media (max-width: 768px) {
@@ -680,21 +862,9 @@
         </div>
       </div>
 
-      <!-- Hero image placeholder (desktop only) -->
-      <div class="hero-img-placeholder" aria-hidden="true">
-        <div class="hero-img-inner">
-          <div class="placeholder-icon">
-            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-              <circle cx="12" cy="12" r="10"/>
-              <circle cx="12" cy="12" r="3"/>
-              <line x1="12" y1="2" x2="12" y2="9"/>
-              <line x1="12" y1="15" x2="12" y2="22"/>
-              <line x1="2" y1="12" x2="9" y2="12"/>
-              <line x1="15" y1="12" x2="22" y2="12"/>
-            </svg>
-          </div>
-          <p class="placeholder-label">放置球隊獲得全國冠軍時<br/>的隊伍大合照</p>
-        </div>
+      <!-- Hero image (desktop only) -->
+      <div class="hero-img-placeholder">
+        <img src="pics/頒獎/c01.jpg" alt="崇倫國中女子手球隊全國冠軍大合照" class="hero-real-img" />
       </div>
     </section>
 
@@ -750,12 +920,8 @@
             <p class="section-subtitle">長期深耕體育專長，在汗水中淬鍊出接軌國際的競爭力。</p>
             <p>崇倫國中女子手球隊長期投入專長訓練，已建立起高度自律與團隊默契。儘管過程艱辛，這群孩子依然保持高強度的練習節奏，在場上實踐永不放棄的體育精神。這份亮眼的戰績，不僅證明了孩子們的努力，更讓她們獲得正式推薦，承擔代表國家出征丹麥維堡國際賽的使命。</p>
           </div>
-          <div class="performance-img-placeholder reveal" aria-label="球員在賽場上拼搏的照片（圖片待放置）" role="img">
-            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
-              <polyline points="21 15 16 10 5 21"/>
-            </svg>
-            <p style="color:var(--muted);font-size:.875rem;">放置球員在賽場上<br/>拼搏的精彩動態特寫</p>
+          <div class="reveal" style="border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg);">
+            <img src="pics/比賽/default.jpg" alt="崇倫國中女子手球隊奪冠時刻" style="width:100%;height:auto;display:block;" loading="lazy" />
           </div>
         </div>
 
@@ -984,6 +1150,10 @@
                 <div class="step-content">
                   <div class="step-title">完成捐款</div>
                   <div class="step-desc">完成匯款後，請告知教練或學校，以便登記捐款人資訊。</div>
+                  <div style="display:flex;align-items:center;gap:8px;margin-top:10px;padding:10px 14px;background:rgba(245,166,35,.12);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    <span style="font-size:.82rem;font-weight:700;color:#92400E;">匯款備註請填寫：手球隊出國</span>
+                  </div>
                 </div>
               </div>
               <div class="step" role="listitem">
@@ -1001,7 +1171,60 @@
             <div class="contact-school">學校單位</div>
             <div class="contact-school-name">台中市立崇倫國民中學</div>
 
-            <div class="contact-person">
+            <!-- ── Inline bank info ── -->
+            <div class="bank-card-inline" role="region" aria-label="匯款帳號資訊">
+              <div class="bank-card-inline-label">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+                匯款資訊
+              </div>
+              <div class="bank-card-inline-row">
+                <span class="bank-card-inline-key">銀行</span>
+                <span class="bank-card-inline-val">
+                  合作金庫銀行
+                  <button class="copy-btn" onclick="copyText('合作金庫銀行', this)" data-tip="複製" aria-label="複製銀行名稱">
+                    <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    <svg class="copy-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  </button>
+                </span>
+              </div>
+              <div class="bank-card-inline-row">
+                <span class="bank-card-inline-key">代號</span>
+                <span class="bank-card-inline-val">
+                  006
+                  <button class="copy-btn" onclick="copyText('006', this)" data-tip="複製" aria-label="複製銀行代號">
+                    <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    <svg class="copy-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  </button>
+                </span>
+              </div>
+              <div class="bank-card-inline-row">
+                <span class="bank-card-inline-key">帳號</span>
+                <span class="bank-card-inline-val account">
+                  5193717517211
+                  <button class="copy-btn" onclick="copyText('5193717517211', this)" data-tip="複製帳號" aria-label="複製帳號">
+                    <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    <svg class="copy-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  </button>
+                </span>
+              </div>
+              <div class="bank-card-inline-row">
+                <span class="bank-card-inline-key">戶名</span>
+                <span class="bank-card-inline-val" style="font-size:.8rem;flex-wrap:wrap;gap:6px;">
+                  台中市立崇倫國民中學家長委員會
+                  <button class="copy-btn" onclick="copyText('台中市立崇倫國民中學家長委員會', this)" data-tip="複製" aria-label="複製戶名">
+                    <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    <svg class="copy-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  </button>
+                </span>
+              </div>
+              <div class="bank-card-inline-row">
+                <span class="bank-card-inline-key">備註</span>
+                <span class="bank-card-inline-val">手球隊出國</span>
+              </div>
+            </div>
+
+            <!-- ── Coach contact (secondary info) ── -->
+            <div class="contact-person" style="margin-top:0;">
               <div class="person-avatar" aria-hidden="true">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
@@ -1010,27 +1233,28 @@
               <div>
                 <div class="person-name">顏國松 教練</div>
                 <div class="person-role">崇倫國中女子手球隊</div>
-                <div class="person-phone">
+                <div class="person-phone" style="cursor:default;">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.39 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.79a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
                   </svg>
-                  <a href="tel:0980521741" style="color:inherit;text-decoration:none;" aria-label="撥打電話給顏國松教練">0980-521741</a>
+                  <span>0980-521741</span>
                 </div>
               </div>
             </div>
 
-            <div class="contact-actions">
-              <button class="contact-btn contact-btn-primary" onclick="openModal()" aria-label="查看匯款資訊">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/>
-                </svg>
-                查看匯款資訊
-              </button>
-              <a href="tel:0980521741" class="contact-btn contact-btn-outline" aria-label="立即致電教練完成捐款聯繫">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.39 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.79a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-                </svg>
-                完成捐款聯繫
+            <!-- Social & Email -->
+            <div class="social-links" aria-label="社群與聯絡方式">
+              <a href="mailto:yenkuosung@yahoo.com.tw" class="social-link email" aria-label="寄送 Email 給顏教練">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                Email 教練
+              </a>
+              <a href="https://www.instagram.com/cljh_handball_team/" class="social-link ig" target="_blank" rel="noopener noreferrer" aria-label="前往 Instagram 頁面">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg>
+                Instagram
+              </a>
+              <a href="https://www.facebook.com/profile.php?id=100054639630742" class="social-link fb" target="_blank" rel="noopener noreferrer" aria-label="前往 Facebook 頁面">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                Facebook
               </a>
             </div>
           </div>
@@ -1038,13 +1262,98 @@
       </div>
     </section>
 
+    <!-- ════════════════════════════════════
+         § 6  GALLERY
+    ════════════════════════════════════ -->
+    <section id="gallery" class="section" aria-labelledby="galleryTitle">
+      <div class="container">
+        <div class="section-label" aria-hidden="true">精彩回顧</div>
+        <h2 class="section-title" id="galleryTitle">汗水鑄就榮耀</h2>
+        <p class="section-subtitle">每一張照片，都是她們拼搏的印記。</p>
+
+        <div class="gallery-grid">
+          <div class="gallery-item" onclick="openLightbox('pics/頒獎/c01.jpg')">
+            <img src="pics/頒獎/c01.jpg" alt="全國錦標賽冠軍大合照" loading="lazy" />
+            <div class="gallery-overlay"><span class="gallery-caption">全國錦標賽冠軍</span></div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('pics/頒獎/c02.jpg')">
+            <img src="pics/頒獎/c02.jpg" alt="師生盃頒獎典禮" loading="lazy" />
+            <div class="gallery-overlay"><span class="gallery-caption">師生盃頒獎典禮</span></div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('pics/頒獎/c03.jpg')">
+            <img src="pics/頒獎/c03.jpg" alt="台中盃全國手球錦標賽" loading="lazy" />
+            <div class="gallery-overlay"><span class="gallery-caption">台中盃全國手球錦標賽</span></div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('pics/比賽/20251220全國賽_260414_2.jpg')">
+            <img src="pics/比賽/20251220全國賽_260414_2.jpg" alt="全國賽球員射門" loading="lazy" />
+            <div class="gallery-overlay"><span class="gallery-caption">全國賽 — 射門</span></div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('pics/比賽/2026312師生盃_260414_2.jpg')">
+            <img src="pics/比賽/2026312師生盃_260414_2.jpg" alt="師生盃球員射門" loading="lazy" />
+            <div class="gallery-overlay"><span class="gallery-caption">師生盃 — 射門</span></div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('pics/比賽/20251220全國賽_260414_1.jpg')">
+            <img src="pics/比賽/20251220全國賽_260414_1.jpg" alt="全國賽守門攻防" loading="lazy" />
+            <div class="gallery-overlay"><span class="gallery-caption">全國賽 — 防守</span></div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('pics/比賽/2025822台中盃_260414_2.jpg')">
+            <img src="pics/比賽/2025822台中盃_260414_2.jpg" alt="台中盃防守" loading="lazy" />
+            <div class="gallery-overlay"><span class="gallery-caption">台中盃 — 防守</span></div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('pics/比賽/20251220全國賽_260414_8.jpg')">
+            <img src="pics/比賽/20251220全國賽_260414_8.jpg" alt="全國賽精彩進攻" loading="lazy" />
+            <div class="gallery-overlay"><span class="gallery-caption">全國賽 — 進攻</span></div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('pics/比賽/2026312師生盃_260414_7.jpg')">
+            <img src="pics/比賽/2026312師生盃_260414_7.jpg" alt="師生盃防守" loading="lazy" />
+            <div class="gallery-overlay"><span class="gallery-caption">師生盃 — 防守</span></div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('pics/比賽/20260316師生盃_260414_1.jpg')">
+            <img src="pics/比賽/20260316師生盃_260414_1.jpg" alt="師生盃賽前集合" loading="lazy" />
+            <div class="gallery-overlay"><span class="gallery-caption">師生盃 — 賽前集合</span></div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('pics/比賽/2025822台中盃_260414_1.jpg')">
+            <img src="pics/比賽/2025822台中盃_260414_1.jpg" alt="台中盃場邊加油" loading="lazy" />
+            <div class="gallery-overlay"><span class="gallery-caption">台中盃 — 場邊加油</span></div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('pics/比賽/20251220全國賽_260414_9.jpg')">
+            <img src="pics/比賽/20251220全國賽_260414_9.jpg" alt="全國賽中場休息" loading="lazy" />
+            <div class="gallery-overlay"><span class="gallery-caption">全國賽 — 中場休息</span></div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('pics/比賽/20251220全國賽_260414_6.jpg')">
+            <img src="pics/比賽/20251220全國賽_260414_6.jpg" alt="全國賽進攻" loading="lazy" />
+            <div class="gallery-overlay"><span class="gallery-caption">全國賽 — 進攻</span></div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('pics/比賽/2026312師生盃_260414_8.jpg')">
+            <img src="pics/比賽/2026312師生盃_260414_8.jpg" alt="師生盃傳球配合" loading="lazy" />
+            <div class="gallery-overlay"><span class="gallery-caption">師生盃 — 傳球配合</span></div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('pics/比賽/2026312師生盃_260414_3.jpg')">
+            <img src="pics/比賽/2026312師生盃_260414_3.jpg" alt="師生盃賽前握手" loading="lazy" />
+            <div class="gallery-overlay"><span class="gallery-caption">師生盃 — 賽前握手</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
+
+  <!-- ── Lightbox ── -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="照片放大檢視" tabindex="-1">
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="關閉">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <img id="lightboxImg" src="" alt="" />
+  </div>
 
   <!-- ── Footer ── -->
   <footer>
     <strong>台中市立崇倫國民中學 女子手球隊</strong><br/>
     2026 丹麥維堡國際手球分齡賽 征戰計畫<br/>
-    聯絡教練：顏國松 <a href="tel:0980521741" style="color:rgba(255,255,255,.7);">0980-521741</a>
+    <div style="margin-top:12px;display:flex;justify-content:center;gap:16px;flex-wrap:wrap;">
+      <a href="https://www.instagram.com/cljh_handball_team/" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.8rem;" aria-label="Instagram">Instagram</a>
+      <a href="https://www.facebook.com/profile.php?id=100054639630742" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.8rem;" aria-label="Facebook">Facebook</a>
+    </div>
   </footer>
 
   <!-- ── Bank info modal ── -->
@@ -1053,26 +1362,75 @@
       <h2 class="modal-title" id="modalTitle">匯款資訊</h2>
       <div role="list" aria-label="匯款帳號資訊">
         <div class="bank-row" role="listitem">
+          <span class="bank-key">銀行</span>
+          <span class="bank-val">
+            合作金庫銀行
+            <button class="copy-btn" onclick="copyText('合作金庫銀行', this)" data-tip="複製" aria-label="複製銀行名稱">
+              <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <svg class="copy-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            </button>
+          </span>
+        </div>
+        <div class="bank-row" role="listitem">
+          <span class="bank-key">代號</span>
+          <span class="bank-val">
+            006
+            <button class="copy-btn" onclick="copyText('006', this)" data-tip="複製" aria-label="複製銀行代號">
+              <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <svg class="copy-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            </button>
+          </span>
+        </div>
+        <div class="bank-row" role="listitem">
+          <span class="bank-key">帳號</span>
+          <span class="bank-val" style="font-family:'Barlow Condensed',sans-serif;font-size:1.15rem;letter-spacing:.04em;color:var(--red);">
+            5193717517211
+            <button class="copy-btn" onclick="copyText('5193717517211', this)" data-tip="複製帳號" aria-label="複製帳號">
+              <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <svg class="copy-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            </button>
+          </span>
+        </div>
+        <div class="bank-row" role="listitem">
           <span class="bank-key">戶名</span>
-          <span class="bank-val">台中市立崇倫國民中學</span>
+          <span class="bank-val" style="font-size:.9rem;flex-wrap:wrap;gap:6px;">
+            台中市立崇倫國民中學家長委員會
+            <button class="copy-btn" onclick="copyText('台中市立崇倫國民中學家長委員會', this)" data-tip="複製" aria-label="複製戶名">
+              <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <svg class="copy-ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            </button>
+          </span>
         </div>
         <div class="bank-row" role="listitem">
-          <span class="bank-key">帳戶性質</span>
-          <span class="bank-val">保管金專戶</span>
-        </div>
-        <div class="bank-row" role="listitem">
-          <span class="bank-key">聯絡教練</span>
-          <span class="bank-val">顏國松 0980-521741</span>
+          <span class="bank-key">備註</span>
+          <span class="bank-val">手球隊出國</span>
         </div>
       </div>
       <div class="modal-note">
-        <strong>注意事項：</strong>請先聯繫教練取得正確帳號資訊後再行匯款。校方將開立正式領據，並按程序核銷，同時製作成果報告回饋每一位支持者。
+        <strong>注意事項：</strong>匯款後請聯繫顏國松教練 (0980-521741) 告知捐款人資訊，校方將開立正式領據並製作成果報告回饋每一位支持者。
       </div>
       <button class="modal-close" onclick="closeModal()">關閉</button>
     </div>
   </div>
 
   <script>
+    // ── Copy to clipboard ──
+    function copyText(text, btn) {
+      navigator.clipboard.writeText(text).then(() => {
+        btn.classList.add('copied');
+        setTimeout(() => btn.classList.remove('copied'), 2000);
+      }).catch(() => {
+        // Fallback for older browsers
+        const ta = document.createElement('textarea');
+        ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        btn.classList.add('copied');
+        setTimeout(() => btn.classList.remove('copied'), 2000);
+      });
+    }
+
     // ── Scroll reveal ──
     const revealEls = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
@@ -1157,7 +1515,23 @@
       if (e.target === e.currentTarget) closeModal();
     });
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeModal();
+      if (e.key === 'Escape') { closeModal(); closeLightbox(); }
+    });
+
+    // ── Lightbox ──
+    function openLightbox(src) {
+      const lb = document.getElementById('lightbox');
+      const img = document.getElementById('lightboxImg');
+      img.src = src; img.alt = '';
+      lb.classList.add('open'); lb.focus();
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('lightbox').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) closeLightbox();
     });
   </script>
 </body>
