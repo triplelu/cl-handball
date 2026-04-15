@@ -464,6 +464,7 @@
     .contact-card {
       background: linear-gradient(135deg, var(--navy-dk), var(--navy));
       border-radius: 20px; padding: 48px; color: white;
+      overflow: hidden; word-break: break-word;
     }
     .contact-school {
       font-family: 'Barlow Condensed', sans-serif;
@@ -864,7 +865,9 @@
       .stats-strip { grid-template-columns: 1fr; }
       .achievements { flex-direction: column; }
       .goal-box { padding: 32px 24px; }
-      .contact-card { padding: 32px 24px; }
+      .contact-card { padding: 24px 20px; }
+      .bank-card-inline { padding: 14px; }
+      .person-phone span { font-size: .85rem; overflow-wrap: anywhere; }
       .modal { padding: 32px 24px; }
       .sticky-cta { bottom: 16px; right: 16px; }
     }
@@ -1334,24 +1337,6 @@
               </div>
             </div>
 
-            <!-- ── Official Social ── -->
-            <div style="margin-bottom:20px;">
-              <div style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:flex;align-items:center;gap:8px;">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-                學校官方社群媒體
-              </div>
-              <div class="social-links" aria-label="學校官方社群連結" style="margin-top:0;">
-                <a href="https://www.instagram.com/cljh_handball_team/" class="social-link ig" target="_blank" rel="noopener noreferrer" aria-label="手球隊官方 Instagram">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg>
-                  手球隊 IG
-                </a>
-                <a href="https://www.facebook.com/profile.php?id=100054639630742" class="social-link fb" target="_blank" rel="noopener noreferrer" aria-label="手球隊官方 Facebook">
-                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-                  手球隊 FB
-                </a>
-              </div>
-            </div>
-
             <!-- ── Coach contact ── -->
             <div style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:10px;display:flex;align-items:center;gap:8px;">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
@@ -1436,9 +1421,19 @@
   <footer>
     <strong>台中市立崇倫國民中學 女子手球隊</strong><br/>
     2026 丹麥維堡國際手球分齡賽 征戰計畫<br/>
-    <div style="margin-top:12px;display:flex;justify-content:center;gap:16px;flex-wrap:wrap;">
-      <a href="https://www.instagram.com/cljh_handball_team/" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.8rem;" aria-label="手球隊官方 Instagram">手球隊 Instagram</a>
-      <a href="https://www.facebook.com/profile.php?id=100054639630742" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.8rem;" aria-label="手球隊官方 Facebook">手球隊 Facebook</a>
+    <div style="margin-top:16px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap;">
+      <a href="https://www.instagram.com/cljh_handball_team/" target="_blank" rel="noopener noreferrer"
+         style="display:inline-flex;align-items:center;gap:7px;padding:8px 16px;border-radius:50px;background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);color:white;text-decoration:none;font-size:.8rem;font-weight:600;"
+         aria-label="手球隊官方 Instagram">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg>
+        Instagram
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=100054639630742" target="_blank" rel="noopener noreferrer"
+         style="display:inline-flex;align-items:center;gap:7px;padding:8px 16px;border-radius:50px;background:#1877F2;color:white;text-decoration:none;font-size:.8rem;font-weight:600;"
+         aria-label="手球隊官方 Facebook">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        Facebook
+      </a>
     </div>
   </footer>
 
