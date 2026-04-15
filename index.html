@@ -30,7 +30,7 @@
       --shadow-lg: 0 12px 48px rgba(26,46,90,.18);
     }
 
-    html { scroll-behavior: smooth; font-size: 16px; scroll-padding-top: 68px; }
+    html { scroll-behavior: smooth; font-size: 16px; scroll-padding-top: 68px; overflow-x: hidden; max-width: 100%; }
 
     body {
       font-family: 'Noto Sans TC', sans-serif;
@@ -38,6 +38,7 @@
       background: var(--white);
       line-height: 1.6;
       overflow-x: hidden;
+      max-width: 100%;
     }
 
     /* ── Skip link ── */
@@ -607,6 +608,8 @@
     .bank-card-inline-val.account {
       font-family: 'Barlow Condensed', sans-serif;
       font-size: 1.05rem; letter-spacing: .04em; color: var(--gold-lt);
+      -webkit-font-smoothing: antialiased;
+      font-feature-settings: "tnum";
     }
     /* copy btn on dark bg */
     .bank-card-inline .copy-btn {
@@ -883,7 +886,7 @@
   <!-- ── Site Navigation ── -->
   <nav class="site-nav" id="siteNav" aria-label="主要導覽">
     <div class="nav-inner">
-      <a href="#hero" class="nav-logo">崇倫 × 手球</a>
+      <a href="#hero" class="nav-logo">崇倫 CLJH × 手球隊</a>
       <div class="nav-links">
         <a href="#performance">實力印證</a>
         <a href="#mission">出征計畫</a>
@@ -1331,7 +1334,29 @@
               </div>
             </div>
 
-            <!-- ── Coach contact (secondary info) ── -->
+            <!-- ── Official Social ── -->
+            <div style="margin-bottom:20px;">
+              <div style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:flex;align-items:center;gap:8px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                學校官方社群媒體
+              </div>
+              <div class="social-links" aria-label="學校官方社群連結" style="margin-top:0;">
+                <a href="https://www.instagram.com/cljh_handball_team/" class="social-link ig" target="_blank" rel="noopener noreferrer" aria-label="手球隊官方 Instagram">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg>
+                  手球隊 IG
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=100054639630742" class="social-link fb" target="_blank" rel="noopener noreferrer" aria-label="手球隊官方 Facebook">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                  手球隊 FB
+                </a>
+              </div>
+            </div>
+
+            <!-- ── Coach contact ── -->
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:10px;display:flex;align-items:center;gap:8px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              聯繫教練
+            </div>
             <div class="contact-person" style="margin-top:0;">
               <div class="person-avatar" aria-hidden="true">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1351,18 +1376,6 @@
                   <span>yenkuosung@yahoo.com.tw</span>
                 </div>
               </div>
-            </div>
-
-            <!-- Social -->
-            <div class="social-links" aria-label="社群連結">
-              <a href="https://www.instagram.com/cljh_handball_team/" class="social-link ig" target="_blank" rel="noopener noreferrer" aria-label="前往 Instagram 頁面">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg>
-                Instagram
-              </a>
-              <a href="https://www.facebook.com/profile.php?id=100054639630742" class="social-link fb" target="_blank" rel="noopener noreferrer" aria-label="前往 Facebook 頁面">
-                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-                Facebook
-              </a>
             </div>
           </div>
         </div>
@@ -1424,8 +1437,8 @@
     <strong>台中市立崇倫國民中學 女子手球隊</strong><br/>
     2026 丹麥維堡國際手球分齡賽 征戰計畫<br/>
     <div style="margin-top:12px;display:flex;justify-content:center;gap:16px;flex-wrap:wrap;">
-      <a href="https://www.instagram.com/cljh_handball_team/" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.8rem;" aria-label="Instagram">Instagram</a>
-      <a href="https://www.facebook.com/profile.php?id=100054639630742" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.8rem;" aria-label="Facebook">Facebook</a>
+      <a href="https://www.instagram.com/cljh_handball_team/" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.8rem;" aria-label="手球隊官方 Instagram">手球隊 Instagram</a>
+      <a href="https://www.facebook.com/profile.php?id=100054639630742" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,.6);text-decoration:none;font-size:.8rem;" aria-label="手球隊官方 Facebook">手球隊 Facebook</a>
     </div>
   </footer>
 
@@ -1446,7 +1459,7 @@
         </div>
         <div class="bank-row" role="listitem">
           <span class="bank-key">代號</span>
-          <span class="bank-val" style="font-family:'Barlow Condensed',sans-serif;font-size:1.15rem;letter-spacing:.04em;color:var(--red);">
+          <span class="bank-val" style="font-family:'Barlow Condensed',sans-serif;font-size:1.15rem;letter-spacing:.04em;color:var(--red);-webkit-font-smoothing:antialiased;font-feature-settings:'tnum';">
             006
             <button class="copy-btn" onclick="copyText('006', this)" data-tip="複製" aria-label="複製銀行代號">
               <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
@@ -1456,7 +1469,7 @@
         </div>
         <div class="bank-row" role="listitem">
           <span class="bank-key">帳號</span>
-          <span class="bank-val" style="font-family:'Barlow Condensed',sans-serif;font-size:1.15rem;letter-spacing:.04em;color:var(--red);">
+          <span class="bank-val" style="font-family:'Barlow Condensed',sans-serif;font-size:1.15rem;letter-spacing:.04em;color:var(--red);-webkit-font-smoothing:antialiased;font-feature-settings:'tnum';">
             5193717517211
             <button class="copy-btn" onclick="copyText('5193717517211', this)" data-tip="複製帳號" aria-label="複製帳號">
               <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
