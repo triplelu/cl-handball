@@ -30,7 +30,7 @@
       --shadow-lg: 0 12px 48px rgba(26,46,90,.18);
     }
 
-    html { scroll-behavior: smooth; font-size: 16px; }
+    html { scroll-behavior: smooth; font-size: 16px; scroll-padding-top: 68px; }
 
     body {
       font-family: 'Noto Sans TC', sans-serif;
@@ -639,14 +639,15 @@
 
     .slider-wrap {
       position: relative; overflow: hidden; border-radius: 14px;
-      user-select: none;
+      user-select: none; width: 100%;
     }
     .slider-track {
       display: flex; transition: transform .5s cubic-bezier(.4,0,.2,1);
-      will-change: transform;
+      will-change: transform; width: 100%;
     }
     .slider-slide {
-      flex: 0 0 100%; position: relative; cursor: pointer;
+      flex: 0 0 100%; min-width: 0; box-sizing: border-box;
+      position: relative; cursor: pointer;
     }
     .slider-slide img {
       width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block;
@@ -726,6 +727,8 @@
 
     @media (max-width: 768px) {
       .slider-btn { width: 38px; height: 38px; }
+      .slider-wrap { border-radius: 8px; }
+      .slider-slide img { aspect-ratio: 4/3; }
     }
 
     /* ── Footer ── */
@@ -746,6 +749,79 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
       .reveal { opacity: 1; transform: none; }
+    }
+
+    /* ── Site Navigation ── */
+    .site-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(15,28,58,.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px; height: 60px;
+    }
+    .nav-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800; font-size: 1.1rem; letter-spacing: .05em;
+      color: var(--gold); white-space: nowrap; flex-shrink: 0;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a {
+      color: rgba(255,255,255,.75); text-decoration: none;
+      font-size: .875rem; font-weight: 600; padding: 8px 12px;
+      border-radius: 8px; transition: color .2s, background .2s; white-space: nowrap;
+    }
+    .nav-links a:hover, .nav-links a.active { color: white; background: rgba(255,255,255,.1); }
+    .nav-cta-btn {
+      display: flex; align-items: center; gap: 6px;
+      padding: 8px 18px; border-radius: 50px; border: none;
+      background: var(--red); color: white;
+      font-family: 'Noto Sans TC', sans-serif; font-weight: 700; font-size: .875rem;
+      cursor: pointer; white-space: nowrap;
+      transition: background .2s, transform .2s;
+    }
+    .nav-cta-btn:hover { background: var(--red-dk); transform: translateY(-1px); }
+    .nav-burger {
+      display: none; flex-direction: column; justify-content: center; align-items: center;
+      width: 40px; height: 40px; border: none; background: none;
+      cursor: pointer; gap: 5px; padding: 0;
+      border-radius: 8px; transition: background .2s;
+    }
+    .nav-burger:hover { background: rgba(255,255,255,.1); }
+    .nav-burger span {
+      display: block; width: 22px; height: 2px;
+      background: white; border-radius: 2px;
+      transition: transform .3s, opacity .3s;
+    }
+    .nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2) { opacity: 0; }
+    .nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-mobile {
+      display: none; flex-direction: column; padding: 12px 24px 20px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      background: rgba(10,20,45,.97);
+    }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a {
+      color: rgba(255,255,255,.8); text-decoration: none;
+      font-size: 1rem; font-weight: 600; padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      transition: color .2s;
+    }
+    .nav-mobile a:last-of-type { border-bottom: none; }
+    .nav-mobile a:hover { color: var(--gold); }
+    .nav-mobile-cta {
+      margin-top: 16px; padding: 14px 24px; border-radius: 50px; border: none;
+      background: var(--red); color: white;
+      font-family: 'Noto Sans TC', sans-serif; font-weight: 700; font-size: 1rem;
+      cursor: pointer; text-align: center; width: 100%;
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta-btn { display: none; }
+      .nav-burger { display: flex; }
     }
 
     /* ── Responsive ── */
@@ -803,6 +879,32 @@
 
   <!-- Skip link -->
   <a href="#main" class="skip-link">跳至主要內容</a>
+
+  <!-- ── Site Navigation ── -->
+  <nav class="site-nav" id="siteNav" aria-label="主要導覽">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">崇倫 × 手球</a>
+      <div class="nav-links">
+        <a href="#performance">實力印證</a>
+        <a href="#mission">出征計畫</a>
+        <a href="#support">各界支持</a>
+        <a href="#cta">如何支持</a>
+        <a href="#gallery">精彩回顧</a>
+      </div>
+      <button class="nav-cta-btn" onclick="openModal()">立即捐款</button>
+      <button class="nav-burger" id="navBurger" aria-label="開啟選單" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile" id="navMobile">
+      <a href="#performance" onclick="closeMobileNav()">實力印證</a>
+      <a href="#mission" onclick="closeMobileNav()">出征計畫</a>
+      <a href="#support" onclick="closeMobileNav()">各界支持</a>
+      <a href="#cta" onclick="closeMobileNav()">如何支持</a>
+      <a href="#gallery" onclick="closeMobileNav()">精彩回顧</a>
+      <button class="nav-mobile-cta" onclick="openModal();closeMobileNav();">立即捐款支持</button>
+    </div>
+  </nav>
 
   <!-- ── Sticky CTA ── -->
   <div class="sticky-cta" id="stickyCta" aria-label="快捷捐款按鈕">
@@ -1195,7 +1297,7 @@
               </div>
               <div class="bank-card-inline-row">
                 <span class="bank-card-inline-key">代號</span>
-                <span class="bank-card-inline-val">
+                <span class="bank-card-inline-val account">
                   006
                   <button class="copy-btn" onclick="copyText('006', this)" data-tip="複製" aria-label="複製銀行代號">
                     <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
@@ -1344,7 +1446,7 @@
         </div>
         <div class="bank-row" role="listitem">
           <span class="bank-key">代號</span>
-          <span class="bank-val">
+          <span class="bank-val" style="font-family:'Barlow Condensed',sans-serif;font-size:1.15rem;letter-spacing:.04em;color:var(--red);">
             006
             <button class="copy-btn" onclick="copyText('006', this)" data-tip="複製" aria-label="複製銀行代號">
               <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
@@ -1552,6 +1654,32 @@
         });
       });
     })();
+
+    // ── Mobile nav ──
+    const navBurger = document.getElementById('navBurger');
+    const navMobile = document.getElementById('navMobile');
+    function closeMobileNav() {
+      navBurger.classList.remove('open');
+      navMobile.classList.remove('open');
+      navBurger.setAttribute('aria-expanded', 'false');
+    }
+    navBurger.addEventListener('click', () => {
+      const isOpen = navMobile.classList.toggle('open');
+      navBurger.classList.toggle('open', isOpen);
+      navBurger.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    // ── Active nav link on scroll ──
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const sectionEls = document.querySelectorAll('section[id]');
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+        }
+      });
+    }, { threshold: 0.35 });
+    sectionEls.forEach(s => sectionObserver.observe(s));
 
     // ── Lightbox ──
     function openLightbox(src, altText) {
