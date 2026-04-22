@@ -1527,6 +1527,7 @@
   <script>
     // ── Copy to clipboard ──
     function copyText(text, btn) {
+      gtag('event', 'copy_bank_info', { item: text });
       navigator.clipboard.writeText(text).then(() => {
         btn.classList.add('copied');
         setTimeout(() => btn.classList.remove('copied'), 2000);
@@ -1613,6 +1614,7 @@
 
     // ── Modal ──
     function openModal() {
+      gtag('event', 'open_donation_modal');
       const backdrop = document.getElementById('modalBackdrop');
       backdrop.classList.add('open');
       backdrop.focus();
